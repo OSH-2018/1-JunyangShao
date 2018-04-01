@@ -376,7 +376,7 @@ char *after_dashes;
 
 #### 初始化串口:console_init
 
-![52255966189](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522559661890.png)
+![52255966189](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/2.png)
 
 #### rest_init():最后的初始化工作
 
