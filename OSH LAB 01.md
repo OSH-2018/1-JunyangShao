@@ -82,7 +82,7 @@ umount rootfs
 
 ### qemu+gdb调试内核
 
-![52250919844](C:\Users\35177\AppData\Local\Temp\1522509198442.png)
+![52250919844](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522509198442.png)
 
 使用qemu打开虚拟机，此时跳出来一个黑色的Qemu窗口
 
@@ -98,7 +98,7 @@ gdb -tui
 (gdb)c
 ```
 
-![1](C:\Users\35177\Desktop\osh\1.png)
+![1](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1.png)
 
 然后出现这个界面，说明断点成功啦
 
@@ -340,7 +340,7 @@ char *after_dashes;
 
 使用gdb跟踪到这个函数的入口
 
-![52255038511](C:\Users\35177\AppData\Local\Temp\1522550385116.png)
+![52255038511](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522550385116.png)
 
 可以看到它设置了一个栈，并且设置了栈底防止溢出。
 
@@ -350,7 +350,7 @@ char *after_dashes;
 
 断点跳到这个函数：
 
-![52255128482](C:\Users\35177\AppData\Local\Temp\1522551284824.png)
+![52255128482](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522551284824.png)
 
 该函数先取得cpu的ID，然后将cpu状态设置为online、active、present、possible
 
@@ -358,41 +358,41 @@ char *after_dashes;
 
 接下来程序会运行到函数setup_arch
 
-![52255887200](C:\Users\35177\AppData\Local\Temp\1522558872008.png)
+![52255887200](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522558872008.png)
 
 这是体系架构初始化的函数，定义在setup.c中
 
 #### 初始化硬件中断:trap_init
 
-![52256005274](C:\Users\35177\AppData\Local\Temp\1522560052744.png)
+![52256005274](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522560052744.png)
 
 函数中设置了很多中断门
 
 #### 建立内核的内存分配器:mm_init
 
-![52256013332](C:\Users\35177\AppData\Local\Temp\1522560133326.png)
+![52256013332](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522560133326.png)
 
 可以看到这里设置了很多初始化状态，建立内核的内存分配器
 
 #### 初始化串口:console_init
 
-![52255966189](C:\Users\35177\AppData\Local\Temp\1522559661890.png)
+![52255966189](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522559661890.png)
 
 #### rest_init():最后的初始化工作
 
-![52255221101](C:\Users\35177\AppData\Local\Temp\1522552211015.png)
+![52255221101](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522552211015.png)
 
 gdb断点跳转到此
 
 `start_kernel`函数调用 `rest_init()`函数进行最后的初始化工作
 
-![52255239204](C:\Users\35177\AppData\Local\Temp\1522552392043.png)
+![52255239204](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522552392043.png)
 
 可以看到rcu调度器被调用启动
 
 然后跳转到kernel_thread函数
 
-![52255265714](C:\Users\35177\AppData\Local\Temp\1522552657140.png)
+![52255265714](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522552657140.png)
 
 该函数调用了 _do_fork 进行新线程的创建.
 
@@ -402,6 +402,6 @@ gdb断点跳转到此
 
 上面那些事件是我在网上查了很多资料之后断点找到的，rest_init之后再往下运行就遇到panic了
 
-![52256110506](C:\Users\35177\AppData\Local\Temp\1522561105067.png)
+![52256110506](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522561105067.png)
 
 这是我第一次接触linux，很多东西都还很生涩，犯了很多奇怪的错误，但是也从中锻炼到自己解决问题的能力。说实话，这个kernel启动的过程很多细节我在具体上都还是不理解的，希望后续学习能做的更好吧。
