@@ -7,12 +7,12 @@ OSH LAB 01
 
 ## 一、实验环境
 
-​	·Ubuntu 17.10 64位
-	·gdb
-	·qemu
-	·gcc
-	·busybox
-	通过qemu+gdb跟踪linux-4.15.14 kernel启动过程
+​·Ubuntu 17.10 64位
+·gdb
+·qemu
+·gcc
+·busybox
+通过qemu+gdb跟踪linux-4.15.14 kernel启动过程
 
 ### 系统搭建
 
