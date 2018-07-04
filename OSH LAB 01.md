@@ -317,6 +317,33 @@ asmlinkage __visible void __init start_kernel(void)
 
 第一个断点设在`start_kernel`函数
 
+使用info register命令可以查看寄存器的值，可以看到一个寄存器标有<start_kernel>，应该是标明断点的
+
+```
+rax            0x0	0
+rbx            0x0	0
+rcx            0x0	0
+rdx            0x0	0
+rsi            0x2828350d	673723661
+rdi            0x14650	83536
+rbp            0x0	0x0 <irq_stack_union>
+rsp            0xffffffff82003f50	0xffffffff82003f50 <init_thread_union+16208>
+r8             0xffffffff825a4000	-2108014592
+r9             0x8	8
+r10            0x14	20
+r11            0x10000e3	16777443
+r12            0x0	0
+r13            0x0	0
+r14            0x0	0
+r15            0x0	0
+rip            0xffffffff82538aee	0xffffffff82538aee <start_kernel>
+eflags         0x46	[ PF ZF ]
+cs             0x10	16
+ss             0x0	0
+ds             0x0	0
+es             0x0	0
+```
+
 可以从代码看到它调用了很多个函数
 
 `start_kernel`函数是内核的入口，是与体系架构无关的通用处理函数的入口函数
@@ -396,7 +423,36 @@ gdb断点跳转到此
 
 该函数调用了 _do_fork 进行新线程的创建.
 
+使用info register命令可以读取寄存器的值
+
+```
+rax            0x0	0
+rbx            0xffffffffffffffff	-1
+rcx            0x0	0
+rdx            0x1	1
+rsi            0xffffffff82003df4	-2113913356
+rdi            0x604	1540
+rbp            0xffff8800076ca900	0xffff8800076ca900
+rsp            0xffffffff82003f10	0xffffffff82003f10 <init_thread_union+16144>
+r8             0x0	0
+r9             0x2	2
+r10            0x3ffffffff000	70368744173568
+r11            0x0	0
+r12            0xffffffff825e6920	-2107741920
+r13            0xffffffff826012e0	-2107632928
+r14            0x0	0
+r15            0x0	0
+rip            0xffffffff8171ac80	0xffffffff8171ac80 <rest_init>
+eflags         0x246	[ PF ZF IF ]
+cs             0x10	16
+ss             0x0	0
+ds             0x0	0
+es             0x0	0
+```
+
 最后调用cpu_startup_entry,再在其中调用cpu_idle_loop函数进入睡眠循环.节省CPU 能耗.（即0号进程）
+
+※补充说明：由于补交的时候，我自己的虚拟机上的内核已经删掉了……所以借了别人的内核来读出寄存器的信息。
 
 ## 三、实验总结
 
