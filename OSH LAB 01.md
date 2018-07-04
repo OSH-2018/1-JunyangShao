@@ -415,14 +415,6 @@ gdb断点跳转到此
 
 ![52255239204](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522552392043.png)
 
-可以看到rcu调度器被调用启动
-
-然后跳转到kernel_thread函数
-
-![52255265714](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522552657140.png)
-
-该函数调用了 _do_fork 进行新线程的创建.
-
 使用info register命令可以读取寄存器的值
 
 ```
@@ -449,6 +441,14 @@ ss             0x0	0
 ds             0x0	0
 es             0x0	0
 ```
+
+可以看到rcu调度器被调用启动
+
+然后跳转到kernel_thread函数
+
+![52255265714](https://github.com/OSH-2018/1-JunyangShao/blob/master/pics-lab01/1522552657140.png)
+
+该函数调用了 _do_fork 进行新线程的创建.
 
 最后调用cpu_startup_entry,再在其中调用cpu_idle_loop函数进入睡眠循环.节省CPU 能耗.（即0号进程）
 
